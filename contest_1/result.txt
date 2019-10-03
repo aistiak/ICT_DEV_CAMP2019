@@ -1,0 +1,9 @@
+name  points   position
+
+fazle     31        1st
+hazrat    28        2nd
+partha    15        3rd
+ontor     12        5th
+dip  	  14        4th
+porag     10	    6th	 
+	       

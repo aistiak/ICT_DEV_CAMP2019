@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>todos</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+	<div id="main">
+		<h1>My Todo App</h1>
+		<input type="text" id="task">
+		<button onclick="add_note()">add</button>
+		<ol id="app">
+<!-- 			<li>
+				clean room 
+				<button>delete</button>
+			</li>	 -->
+		</ol>
+	</div>
+</body>
+<script type="text/javascript">
+
+	function add_note(){
+		let txt = $("#task").val()
+		if(txt.length < 1){
+			alert('enter something first')
+			return 
+		}
+     	let li = $("<li>")
+     	let btn = $("<button>delete</button>")
+     	btn.click(function(){
+     		// console.log($(this))
+     		// console.log($(this).parent())
+     		if(confirm(`delete item ${txt}`)){
+     			$(this).parent().remove()	
+     		}
+     		
+
+     	})
+     	btn.hide()
+     	li.mouseout(function(){
+     		btn.hide()
+     		$(this).css('color','black')
+     	})
+     	li.mouseover(function(){
+     		btn.show()
+     		$(this).css('color','red')
+
+     	})
+
+     	li.append(txt)
+     	li.append(btn)
+     	$("#app").append(li)
+     	$("#task").val("")
+
+	}
+
+
+</script>
+<style type="text/css">
+	#main{
+		position: relative;
+		left: 40%;
+		margin-top: 90px;
+	}
+	
+	ol{
+		list-style-type: circle;
+		position: relative;
+		left: -25px;
+	}
+	li{
+		padding: 10px;
+	}
+	ol li{
+		font-size: 20px;
+	}
+	button{
+		margin-left: 20px;
+	}
+
+</style>
+</html>

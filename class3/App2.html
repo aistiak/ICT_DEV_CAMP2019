@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>App2</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<label>ENTER TEXT</label><br>
+	<input type="text" name="word" onkeyup="change_text()" >
+	<br>
+	<label>ENTER COLOR </label><br>
+	<input type="text" name="color" onkeyup="change_color()" >	
+	<br>
+	<button onclick="make_big()">big</button>
+	<button onclick="make_small()">small</button>
+	<br>
+	<button onclick="move_up()">up</button>
+	<button onclick="move_down()">down</button>
+	<button onclick="move_left()">left</button>
+	<button onclick="move_right()">right</button>
+    
+
+	<div id="app"  style="position: relative;"></div>
+</body>
+<script type="text/javascript">
+	// var original_size = 10
+	$(document).ready(function(){
+		let color = $('[name="color"]').val('')
+		let text = $('[name="word"]').val('')
+
+
+	})
+
+	function change_color(){
+		let color = $('[name="color"]').val()
+		$('#app').css('color',color)
+	}
+
+    function move_up(){
+    	$('#app').css('margin-top','-=10')
+    }
+
+    function move_down(){
+    	$('#app').css('margin-top','+=10')
+
+    }
+
+    function move_left(){
+    	$('#app').css('margin-left','-=10')
+    }
+
+    function move_right(){
+    	$('#app').css('margin-left','+=10')
+    }
+
+
+	function change_text(){
+		let text = $('[name="word"]').val()
+		$('#app').html(text)
+	}
+
+	function make_big(){
+		$('#app').css('font-size','+=10')
+	}
+
+	function make_small(){
+		$('#app').css('font-size','-=10')
+	}
+
+</script>
+<style type="text/css">
+	#app{
+		position: relative;
+		left: 50%;
+		top: 70%;
+	}
+</style>
+</html>

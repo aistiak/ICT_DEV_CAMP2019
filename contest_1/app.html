@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>todo app </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<div id="todo">
+		<h1>Todo</h1>
+		<input type="text" id="txt">
+		<button onclick="add_item()">add</button>
+
+		<ol id="todo_list">
+			
+		</ol>
+	</div>
+	<div id="done">
+		<h1>Done</h1>
+		<ol id="done_list">
+
+
+		</ol>
+	</div>
+</body>
+<script type="text/javascript">
+	document.addEventListener('contextmenu', function(e) {
+	  e.preventDefault();
+	});
+	$(document).keydown(function (event) {
+	    if (event.keyCode == 123) { // Prevent F12
+	        return false;
+	    } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I        
+	        return false;
+	    }
+	});
+
+	function add_item(){		
+		let txt = $("#txt").val()
+		if(txt.length<1){
+			alert('enter something frist')
+			return 
+		}
+		$("#txt").val("")
+		console.log(txt)
+
+		let li = $("<li>")
+		let btn = $("<button>delete</button>")
+		btn.hide()
+		btn.click(function (){
+			// if(confirm(`delete "${txt}" !!! `)){
+			// 	$(this).parent().remove()
+			// }
+			$(this).parent().remove()
+			delete_from_todo(txt)
+
+		})
+		li.mouseover(function(){
+			btn.show()
+			$(this).css('color','red')
+		})
+		li.mouseout(function(){
+			btn.hide()
+			$(this).css('color','black')
+
+		})
+		li.append(txt)
+		li.append(btn)
+
+
+
+		$("#todo_list").append(li)
+	}
+
+	function delete_from_todo(txt){
+			let done_list =  $('#done_list')
+			let li = $("<li>")
+			let restore_button = $("<button>restore</button>")
+			let delete_button = $("<button>delete</button>")
+
+			delete_button.click(function(){
+				if(confirm(`Delete " ${txt} " !!!`  )){
+					$(this).parent().remove()		
+				}
+				// restore_to_todo()
+			})
+			restore_button.click(function(){
+				$(this).parent().remove()
+				add_item2(txt)
+			})
+			delete_button.hide()
+			restore_button.hide()
+			li.mouseover(function(){
+				delete_button.show()
+				restore_button.show()
+				$(this).css('color','red')
+			})
+			li.mouseout(function(){
+				delete_button.hide()
+				restore_button.hide()
+				$(this).css('color','black')
+
+			})
+			li.append(txt)
+			li.append(restore_button)
+			li.append(delete_button)
+			done_list.append(li)
+	}
+
+	function add_item2(txt){		
+		// let txt = $("#txt").val()
+		if(txt.length<1){
+			alert('enter something frist')
+			return 
+		}
+		$("#txt").val("")
+		console.log(txt)
+
+		let li = $("<li>")
+		let btn = $("<button>delete</button>")
+		btn.hide()
+		btn.click(function (){
+			// if(confirm(`delete "${txt}" !!! `)){
+			// 	$(this).parent().remove()
+			// }
+			$(this).parent().remove()
+			delete_from_todo(txt)
+
+		})
+		li.mouseover(function(){
+			btn.show()
+			$(this).css('color','red')
+		})
+		li.mouseout(function(){
+			btn.hide()
+			$(this).css('color','black')
+
+		})
+		li.append(txt)
+		li.append(btn)
+
+
+
+		$("#todo_list").append(li)
+	}	
+</script>
+<style type="text/css">
+	#todo{
+		position: relative;
+		left: 30%;
+		margin-top: 90px;
+	}
+	#done{
+		position: fixed;
+		left: 59%;
+		top: 70px;
+	}
+	#done_list{
+		margin-top: 52px;
+	}
+	ol{
+		list-style-type: circle;
+		position: relative;
+		left: -25px;
+	}
+	li{
+		padding: 10px;
+	}
+	ol li{
+		font-size: 20px;
+	}
+	button{
+		margin-left: 20px;
+	}
+</style>
+</html>

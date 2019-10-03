@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>stuff</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<label>enter someting : </label>
+	<br>
+	<input type="text" id="word" onkeyup="print()">
+	<br>
+	<label>enter color : </label>
+	<br>
+	<input type="text" id="color" onkeyup="change_color()">
+	<br>
+	<button onclick="make_big()">big</button>
+	<button onclick="make_small()" >small</button>
+
+	<h1 id="app"> </h1>
+
+</body>
+<script type="text/javascript">
+	function print(){
+		let var1 = $('#word').val()
+		$("#app").html(var1)
+	}
+	function make_big(){
+		$("#app").css('font-size','+=10')
+	}
+	function make_small(){
+		$("#app").css('font-size','-=10')
+	}	
+
+	function change_color(){
+		let val = $("#color").val()
+		$("#app").css('color',val)
+	}
+</script>
+</html>

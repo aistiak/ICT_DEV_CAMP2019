@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>todo app</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="main">
+		<h3>Todo App</h3>
+		<br>
+		<input type="text" id="task">
+		<button onclick="add_to_list()">add</button>
+		<br>
+		<ol id="app">
+
+
+		</ol>
+	</div>
+</body>
+<script type="text/javascript">	
+	function add_to_list(){
+		let txt = $("#task").val()
+		let btn = $("<button>delete</button>")
+		btn.click(function(){
+			$(this).parent().remove()
+		})
+		btn.hide()
+		$("#task").val('')
+		let ol = $("#app")
+		let li = $("<li>")
+		li.mouseover(function(){
+			btn.show()
+		})
+		li.mouseout(function(){
+			btn.hide()
+		})
+		li.append(txt)
+		li.append(btn)
+		ol.append(li)
+
+	}
+</script>
+</html>

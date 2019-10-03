@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>one</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1 id="app">
+		
+	</h1>
+	<button onclick="send()">send</button>
+</body>
+<script type="text/javascript">
+	$(document).ready(function () {
+	})
+
+	function send(){
+		$.get('index.php',function(data,status){
+			$("#app").html(data)
+		})
+	}
+	// $("#app").html('hello world')
+</script>
+</html>

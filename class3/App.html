@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MyApp</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<p>enter name : </p>
+	<input type="text" name="name">
+	<button onclick="greet()">submit</button>
+	<!-- <h1 id='app' ></h1> -->
+
+</body>
+<script type="text/javascript">
+		
+	function greet(){
+		// alert('function called')
+		let h1 = $('<h1>')
+		h1.attr('id','app')
+		h1.html('hello ')
+		$('body').append(h1)
+		let name =  $('[name="name"]').val()
+		$('#app').html('hello  ' + name) 
+		$('#app').css('color','red')
+		$('#app').css('size','500px')
+		$('#app').attr('onmouseover','func1()')
+		$('#app').attr('onmouseout','func2()')
+
+
+	}	
+	function func1(){
+		$('#app').css('color','blue')
+	}
+	function func2(){
+		$('#app').css('color','green')
+	}
+</script>
+</html>

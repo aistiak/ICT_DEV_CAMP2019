@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>todo app </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<div id="main">
+		<h1>My Todo App</h1>
+		<input type="text" id="txt">
+		<button onclick="add_item()">add</button>
+
+		<ol id="app">
+			
+		</ol>
+	</div>
+</body>
+<script type="text/javascript">
+	document.addEventListener('contextmenu', function(e) {
+	  e.preventDefault();
+	});
+	$(document).keydown(function (event) {
+	    if (event.keyCode == 123) { // Prevent F12
+	        return false;
+	    } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I        
+	        return false;
+	    }
+	});
+	function add_item(){		
+		let txt = $("#txt").val()
+		if(txt.length<1){
+			alert('enter something frist')
+			return 
+		}
+		$("#txt").val("")
+		console.log(txt)
+
+		let li = $("<li>")
+		let btn = $("<button>delete</button>")
+		btn.hide()
+		btn.click(function (){
+			if(confirm(`delete "${txt}" !!! `)){
+				$(this).parent().remove()
+			}
+			
+		})
+		li.mouseover(function(){
+			btn.show()
+			$(this).css('color','red')
+		})
+		li.mouseout(function(){
+			btn.hide()
+			$(this).css('color','black')
+
+		})
+		li.append(txt)
+		li.append(btn)
+
+
+
+		$("#app").append(li)
+	}
+</script>
+<style type="text/css">
+	#main{
+		position: relative;
+		left: 40%;
+		margin-top: 90px;
+	}
+	
+	ol{
+		list-style-type: circle;
+		position: relative;
+		left: -25px;
+	}
+	li{
+		padding: 10px;
+	}
+	ol li{
+		font-size: 20px;
+	}
+	button{
+		margin-left: 20px;
+	}
+</style>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>basic jQuuery</title>
+	<!-- cdn -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1 id="app" ></h1>
+	<button onclick="call()" >click me</button>
+</body>
+<script type="text/javascript">
+	$(document).ready(function () {
+
+	})
+	$('#app').attr('onmouseover','change_color()')
+	$('#app').attr('onmouseout','change_color2()')
+	function call(){
+		$("#app").html("hello world")
+		$("#app").css('color','red')
+	}
+	function change_color(){
+		$("#app").css('color','green')
+	}
+
+	function change_color2(){
+		$("#app").css('color','red')
+	}
+
+</script>
+</html>

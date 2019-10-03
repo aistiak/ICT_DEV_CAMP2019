@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bulb</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<div id="main">
+	   <img id="bulb" src="bulb.png">
+	   <button id="btn" onclick="toggle()" style="position: absolute;left: 10%;top: 1%"> on </button>
+	</div>
+</body>
+<script type="text/javascript">
+	let flag = 1 ;
+	function toggle(){
+		console.log(flag)
+		if(flag){
+			$("#bulb").hide()
+			flag = 0
+			$("#btn").html("on")
+		}else{
+		    $("#bulb").show()
+			flag = 1		
+			$("#btn").html("off")
+
+		}
+	}
+</script>
+<style type="text/css">
+	body{
+		background-color: black;
+	}
+	img{
+		width: 300px;
+	}
+	#main{
+		position: relative;
+		left:40%;
+		margin-top: 50px;
+	}
+
+</style>
+</html>
